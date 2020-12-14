@@ -1,12 +1,10 @@
 # Default ignored files
 /shelf/
-/workspace.xml
-/middle.iml
-/misc.xml
-/modules.xml
-/vcs.xml
+/.idea
 # Datasource local storage ignored files
 /../../../../:\MyProjects\middle\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+
+/chapter_007/*.iml
