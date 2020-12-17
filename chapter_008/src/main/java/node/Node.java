@@ -1,3 +1,5 @@
+package node;
+
 import net.jcip.annotations.NotThreadSafe;
 
 @NotThreadSafe
@@ -20,7 +22,7 @@ public final class Node<T> {
 
     @Override
     public String toString() {
-        return "Node{" +
+        return "node.Node{" +
                 "next=" + next +
                 ", value=" + value +
                 '}';

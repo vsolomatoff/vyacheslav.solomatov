@@ -1,3 +1,5 @@
+package cache;
+
 public class CacheShareMain {
     public static void main(String[] args) throws InterruptedException {
         Cache  cache = new Cache();

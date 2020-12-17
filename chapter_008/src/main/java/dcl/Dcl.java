@@ -1,3 +1,5 @@
+package dcl;
+
 public class Dcl {
     public static void main(String[] args) throws InterruptedException {
         Thread first = new Thread(DCLSingleton::instOf);
@@ -7,6 +9,6 @@ public class Dcl {
         second.start();
         first.join();
         second.join();
-        System.out.println("DCLSingleton.instOf() = " + DCLSingleton.instOf());
+        System.out.println("dcl.DCLSingleton.instOf() = " + DCLSingleton.instOf());
     }
 }

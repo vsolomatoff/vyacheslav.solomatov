@@ -1,3 +1,5 @@
+package dcl;
+
 public class DCLSingleton {
     private static DCLSingleton inst;
 

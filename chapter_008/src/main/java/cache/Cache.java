@@ -1,3 +1,5 @@
+package cache;
+
 public class Cache {
     private static Cache cache;
 
