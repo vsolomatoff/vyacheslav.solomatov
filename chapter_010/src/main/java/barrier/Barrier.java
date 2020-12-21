@@ -1,6 +1,11 @@
 package barrier;
 
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
+
+@ThreadSafe
 public class Barrier {
+    @GuardedBy("monitor")
     private boolean flag = false;
 
     private final Object monitor = this;
