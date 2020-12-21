@@ -1,4 +1,5 @@
-import barrier.CountBarrier;
+package barrier;
+
 import org.junit.Test;
 
 public class CountBarrierTest {
