@@ -17,14 +17,14 @@ public class SimpleBlockingQueue<T> {
         this.total = total;
     }
 
-    synchronized T poll() {
+    synchronized public T poll() {
         T t = queue.poll();
         System.out.println("Полученено: " + t);
         if (t==null) {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.out.println("Исключение типа InterruptedException перехвачено.");
+                System.out.println("Исключение типа InterruptedException перехвачено - "  + Thread.currentThread().getName());
                 Thread.currentThread().interrupt();
             }
         } else {
@@ -33,12 +33,12 @@ public class SimpleBlockingQueue<T> {
         return t;
     }
 
-    synchronized void offer(T value) {
+    synchronized public void offer(T value) {
         if (queue.size() >= total) {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.out.println("Исключение типа InterruptedException перехвачено.");
+                System.out.println("Исключение типа InterruptedException перехвачено - " + Thread.currentThread().getName());
                 Thread.currentThread().interrupt();
             }
         } else {
