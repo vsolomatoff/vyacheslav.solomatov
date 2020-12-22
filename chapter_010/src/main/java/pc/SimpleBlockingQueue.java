@@ -19,7 +19,7 @@ public class SimpleBlockingQueue<T> {
 
     synchronized public T poll() {
         T t = queue.poll();
-        System.out.println("Полученено: " + t);
+        System.out.println("Получено: " + t);
         if (t==null) {
             try {
                 wait();
@@ -46,6 +46,10 @@ public class SimpleBlockingQueue<T> {
             System.out.println("queue: " + queue);
             notify();
         }
+    }
+
+    synchronized public boolean isEmpty() {
+        return queue.size()==0;
     }
 
 }
