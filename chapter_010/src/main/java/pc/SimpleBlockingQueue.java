@@ -19,12 +19,12 @@ public class SimpleBlockingQueue<T> {
 
     synchronized public T poll() {
         T t = queue.poll();
-        System.out.println("Получено: " + t);
+        //System.out.println("Получено: " + t);
         if (t==null) {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.out.println("Исключение типа InterruptedException перехвачено - "  + Thread.currentThread().getName());
+                System.out.println("    * Исключение типа InterruptedException перехвачено - "  + Thread.currentThread().getName());
                 Thread.currentThread().interrupt();
             }
         } else {
@@ -38,18 +38,18 @@ public class SimpleBlockingQueue<T> {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.out.println("Исключение типа InterruptedException перехвачено - " + Thread.currentThread().getName());
+                System.out.println("    ** Исключение типа InterruptedException перехвачено - " + Thread.currentThread().getName());
                 Thread.currentThread().interrupt();
             }
         } else {
             queue.add(value);
-            System.out.println("queue: " + queue);
+            //System.out.println("queue: " + queue);
             notify();
         }
     }
 
-    synchronized public boolean isEmpty() {
-        return queue.size()==0;
+    synchronized public boolean notEmpty() {
+        return queue.size() != 0;
     }
 
 }

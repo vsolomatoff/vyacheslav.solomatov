@@ -28,7 +28,7 @@ public class SimpleBlockingQueueTest {
 
         Thread consumer = new Thread(
                 () -> {
-                    while (!queue.isEmpty() || !Thread.currentThread().isInterrupted()) {
+                    while (queue.notEmpty() || !Thread.currentThread().isInterrupted()) {
                         Integer value = queue.poll();
                         if (value!=null) {
                             buffer.add(value);
