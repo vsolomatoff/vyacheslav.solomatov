@@ -1,11 +1,9 @@
 package nonBlokingCache;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.concurrent.atomic.AtomicReference;
-
-import static org.hamcrest.core.Is.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CacheExceptionTest {
 
@@ -27,7 +25,7 @@ public class CacheExceptionTest {
     }*/
 
     @Test
-    public void whenTest() throws InterruptedException {
+    public void whenTestUpdate() throws InterruptedException {
         Cache cache = new Cache();
 
         Base base0 = new Base(0, 0);
@@ -94,6 +92,69 @@ public class CacheExceptionTest {
         thread2.join();
         thread3.join();
         thread4.join();
+
+        System.out.println("cache = " + cache);
+    }
+
+    @Test
+    public void whenTestDelete() throws InterruptedException {
+        Cache cache = new Cache();
+
+        Base base0 = new Base(0, 0);
+        cache.add(base0);
+
+        Base base1 = new Base(1, 0);
+        cache.add(base1);
+
+        Base base3 = new Base(1, 0);
+
+        Thread thread3 = new Thread(
+                () -> {
+                    //while (!Thread.currentThread().isInterrupted()) {
+                    try {
+                        cache.update(base0);
+                    } catch (OptimisticException e) {
+                        System.out.println("Исключение типа OptimisticException перехвачено - " + Thread.currentThread().getName());
+                    }
+                    //}
+                }
+        );
+
+        Thread thread2 = new Thread(
+                () -> {
+                    //while (!Thread.currentThread().isInterrupted()) {
+                    try {
+                        cache.delete(base1);
+                    } catch (OptimisticException e) {
+                        System.out.println("Исключение типа OptimisticException перехвачено - " + Thread.currentThread().getName());
+                    }
+                    //}
+                }
+        );
+
+        Thread thread1 = new Thread(
+                () -> {
+                    //while (!Thread.currentThread().isInterrupted()) {
+                    try {
+                        cache.delete(base3);
+                    } catch (OptimisticException e) {
+                        System.out.println("Исключение типа OptimisticException перехвачено - "  + Thread.currentThread().getName());
+                    }
+                    //}
+                }
+        );
+
+        System.out.println("cache = " + cache);
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
+
+        thread1.join();
+        thread2.join();
+        thread3.join();
+
+        assertThat(cache.size(), is(1));
 
         System.out.println("cache = " + cache);
     }

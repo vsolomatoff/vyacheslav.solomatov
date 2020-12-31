@@ -1,37 +1,31 @@
 package nonBlokingCache;
 
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.BiFunction;
 
 public class Cache {
     ConcurrentHashMap<Integer, Base> concurrentHashMap = new ConcurrentHashMap<>();
 
     public void add(Base model) {
-        concurrentHashMap.put(model.id, model);
+        concurrentHashMap.putIfAbsent(model.getId(), model);
     }
 
-    public void update(Base model) throws OptimisticException {
-        //System.out.println("Started Cache.update - " + Thread.currentThread().getName());
-        BiFunction<Integer, Base, Base> biFunction = (integer, base) -> {
-            if (concurrentHashMap.get(model.id).version!=model.version) {
-                throw new OptimisticException("Выброшено исключение OptimisticException");
-            } else {
-                base.name = Thread.currentThread().getName();
-                base.version++;
+    public Base update(Base model) throws OptimisticException {
+        return concurrentHashMap.computeIfPresent(model.getId(), (integer, base) -> {
+            if (concurrentHashMap.get(base.getId()).getVersion() == model.getVersion()) {
+                model.setVersion(base.getVersion() + 1);
+                model.setName(Thread.currentThread().getName());
             }
-            System.out.println("    base = " + base + ", " + Thread.currentThread().getName());
-            return (Base) base;
-        };
-        concurrentHashMap.computeIfPresent(model.id, biFunction);
-        //System.out.println("Finished Cache.update - " + Thread.currentThread().getName());
+            return model;
+        });
     }
 
     public void delete(Base model) {
-        if (concurrentHashMap.contains(model)) {
-            concurrentHashMap.remove(model.id);
-        }
+            concurrentHashMap.remove(model.getId());
     }
 
+    public int size() {
+        return concurrentHashMap.size();
+    }
 
     @Override
     public String toString() {
