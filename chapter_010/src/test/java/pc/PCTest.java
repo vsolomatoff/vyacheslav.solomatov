@@ -5,7 +5,7 @@ import org.junit.Test;
 public class PCTest {
     int qSize = 50;
 
-    @Test
+    /*@Test
     public void PCTest1() {
         SimpleBlockingQueue<Integer> q = new SimpleBlockingQueue<>(qSize);
 
@@ -20,5 +20,5 @@ public class PCTest {
             e.printStackTrace();
         }
 
-    }
+    }*/
 }

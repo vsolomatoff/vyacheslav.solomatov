@@ -1,6 +1,5 @@
 package singleLockList;
 
-import com.sun.istack.internal.NotNull;
 import net.jcip.annotations.GuardedBy;
 
 import java.util.ConcurrentModificationException;
@@ -179,7 +178,6 @@ public class SimpleLinked<E> {
         return result;
     }
 
-    @NotNull
     synchronized public Iterator<E> iterator() throws ConcurrentModificationException {
         System.out.println("Started SimpleLinked.iterator");
         SimpleLinkedIterator simpleLinkedIterator = new SimpleLinkedIterator(getModCount());
