@@ -3,7 +3,7 @@ public class ConsoleProgress implements Runnable {
     @Override
     public void run() {
         String[] process = {"/", "|", "\\"};
-        int i=0;
+        int i = 0;
         while (!Thread.currentThread().isInterrupted()) {
             System.out.print("\r Loading... " + process[i]);
             try {
@@ -11,7 +11,7 @@ public class ConsoleProgress implements Runnable {
             } catch (InterruptedException e) {
                 break;
             }
-            i = i==2 ? 0 : (i + 1);
+            i = i == 2 ? 0 : (i + 1);
         }
     }
 }

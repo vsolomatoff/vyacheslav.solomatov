@@ -12,7 +12,7 @@ public class ProducerInteger implements Runnable {
     @Override
     public void run() {
         while (true) {
-            q.offer(getRandomNumber(0,1000));
+            q.offer(getRandomNumber(0, 1000));
         }
     }
 

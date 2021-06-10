@@ -20,7 +20,7 @@ public class SimpleBlockingQueue<T> {
     synchronized public T poll() {
         T t = queue.poll();
         //System.out.println("Получено: " + t);
-        if (t==null) {
+        if (t == null) {
             try {
                 wait();
             } catch (InterruptedException e) {

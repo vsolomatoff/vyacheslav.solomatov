@@ -29,10 +29,11 @@ public class Transform extends RecursiveAction {
             // Этот код предназначен только для потребления времени ЦП,
             // чтобы сделать нагляднее эффект от параллельного выполнения
             for (int i = start; i < end; i++) {
-                if ( (data[i] % 2) == 0 ) {
-                    data[i] = Math.sqrt(data [i]);
-                } else
-                    data [i] = Math.cbrt(data [i]);
+                if ((data[i] % 2) == 0) {
+                    data[i] = Math.sqrt(data[i]);
+                } else {
+                    data[i] = Math.cbrt(data[i]);
+                }
             }
         } else {
             // в противном случае продолжить разделение данных на

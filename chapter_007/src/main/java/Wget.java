@@ -24,7 +24,7 @@ public class Wget implements Runnable {
         System.out.println("args = " + Arrays.deepToString(args));
 
         String url;
-        if (args.length>0) {
+        if (args.length > 0) {
             url = args[0];
             if (url.isEmpty()) {
                 url = "https://raw.githubusercontent.com/peterarsentev/course_test/master/pom.xml";
@@ -34,7 +34,7 @@ public class Wget implements Runnable {
         }
 
         int speed = 5000;
-        if (args.length>1) {
+        if (args.length > 1) {
             if (!args[1].isEmpty()) {
                 speed = Integer.parseInt(args[1]);
             }

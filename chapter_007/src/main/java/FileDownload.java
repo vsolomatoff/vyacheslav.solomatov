@@ -20,7 +20,7 @@ public class FileDownload {
                 bytesRead = inputStream.read(dataBuffer, 0, 1024);
                 endTimeStamp = System.nanoTime();
 
-                if (bytesRead!= -1) {
+                if (bytesRead != -1) {
                     System.out.println("startTimeStamp = " + startTimeStamp);
                     System.out.println("endTimeStamp = " + endTimeStamp);
                     // Вычисляем время загрузки очередных байт
@@ -33,7 +33,7 @@ public class FileDownload {
                     fileOutputStream.write(dataBuffer, 0, bytesRead);
 
                     // Ждем нужное нам время, если нужно
-                    if (timeWait>0) {
+                    if (timeWait > 0) {
                         try {
                             Thread.sleep(timeWait);
                         } catch (InterruptedException e) {

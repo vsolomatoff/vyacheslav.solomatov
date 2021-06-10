@@ -22,9 +22,9 @@ public final class Node<T> {
 
     @Override
     public String toString() {
-        return "node.Node{" +
-                "next=" + next +
-                ", value=" + value +
-                '}';
+        return "node.Node{"
+                + "next=" + next
+                + ", value=" + value
+                + '}';
     }
 }

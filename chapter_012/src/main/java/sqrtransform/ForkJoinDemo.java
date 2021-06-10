@@ -4,14 +4,15 @@ import java.util.concurrent.ForkJoinPool;
 
 // продемонстрировать параллельное выполнение
 public class ForkJoinDemo {
-    public static void main (String args[] ) {
+    public static void main(String[] args) {
         // создать пул задач
         ForkJoinPool fjp = new ForkJoinPool();
 
         double[] nums = new double[100000];
         // присвоить некоторые значения
-        for (int i = 0; i < nums.length; i++ )
-        nums[i] = (double) i;
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = (double) i;
+        }
 
         System.out.println("Часть исходной последовательности : ");
 

@@ -5,7 +5,7 @@ import java.util.concurrent.ForkJoinPool;
 import static java.util.concurrent.ForkJoinPool.getCommonPoolParallelism;
 
 public class FJExperiment {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int pLevel;
         int threshold;
 

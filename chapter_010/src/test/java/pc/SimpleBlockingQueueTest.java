@@ -30,7 +30,7 @@ public class SimpleBlockingQueueTest {
                 () -> {
                     while (queue.notEmpty() || !Thread.currentThread().isInterrupted()) {
                         Integer value = queue.poll();
-                        if (value!=null) {
+                        if (value != null) {
                             buffer.add(value);
                         }
                     }

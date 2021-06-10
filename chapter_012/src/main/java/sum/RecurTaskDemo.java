@@ -3,7 +3,7 @@ package sum;
 import java.util.concurrent.ForkJoinPool;
 
 public class RecurTaskDemo {
-    public static void main (String args[]) {
+    public static void main(String[] args) {
         // создать пул задач
         ForkJoinPool fjp = new ForkJoinPool();
 

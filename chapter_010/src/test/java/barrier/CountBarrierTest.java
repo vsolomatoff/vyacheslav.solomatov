@@ -7,7 +7,7 @@ public class CountBarrierTest {
     public void whenCountBarrierEquals10() throws InterruptedException {
         CountBarrier countBarrier = new CountBarrier(10);
 
-        Thread threadCount = new Thread(()->{
+        Thread threadCount = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 countBarrier.count();
             }

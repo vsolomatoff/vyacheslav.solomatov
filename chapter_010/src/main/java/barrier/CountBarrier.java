@@ -34,7 +34,7 @@ public class CountBarrier {
 
     synchronized public void await() {
         System.out.println("Started CountBarrier.await - " + Thread.currentThread().getName());
-        while (count!=total) {
+        while (count != total) {
             try {
                 wait();
             } catch (InterruptedException e) {
